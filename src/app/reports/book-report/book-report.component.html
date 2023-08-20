@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Book Inventory Report</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ISBN</th>
+        <th>Quantity On Hand</th>
+        <th>Title</th>
+        <th>Base Price</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of bookReportData">
+        <td>{{ book.isbn }}</td>
+        <td>{{ book.quantity_On_Hand }}</td>
+        <td>{{ book.title }}</td>
+        <td>R {{ book.basePrice }}</td>
+        <td>R {{ book.price }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

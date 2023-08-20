@@ -1,0 +1,115 @@
+<div class="report-container" *ngIf="isDataLoaded">
+  <div class="titlePage">Order Report</div>
+  
+  <div>
+    <h2>Overall Summary</h2>
+    <div>
+      Total Orders: {{ orderReport.overallSummary.totalOrders }}
+      Total Revenue: {{ orderReport.overallSummary.totalRevenue }}
+      Total Items Sold: {{ orderReport.overallSummary.totalItemsSold }}
+      Total Discounts Applied: {{ orderReport.overallSummary.totalDiscountsApplied }}
+    </div>
+  </div>
+  
+  <div>
+    <h2>Category Breakdown</h2>
+    <div>
+      Total Books Sold: {{ orderReport.categoryBreakdown.totalBooksSold }}
+      Total Equipment Sold: {{ orderReport.categoryBreakdown.totalEquipmentSold }}
+      Total Revenue from Books: {{ orderReport.categoryBreakdown.totalRevenueFromBooks }}
+      Total Revenue from Equipment: {{ orderReport.categoryBreakdown.totalRevenueFromEquipment }}
+    </div>
+  </div>
+  
+  <div>
+    <h2>Voucher Usage</h2>
+    <div>
+      Total Vouchers Applied: {{ orderReport.voucherUsage.totalVouchersApplied }}
+      Total Discount Amount: {{ orderReport.voucherUsage.totalDiscountAmount }}
+    </div>
+  </div>
+  
+  <div>
+    <h2>Time Period Breakdown</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Time Period</th>
+          <th>Total Revenue</th>
+          <th>Total Items Sold</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let timePeriod of orderReport.timePeriodBreakdown.timePeriods.$values">
+          <td>{{ timePeriod.timePeriod }}</td>
+          <td>{{ timePeriod.totalRevenue }}</td>
+          <td>{{ timePeriod.totalItemsSold }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div>
+    <h2>Control Break Sections</h2>
+    <ul>
+      <ng-container *ngFor="let section of orderReport.controlBreakSections.$values">
+        <li>
+          <details>
+            <summary>
+              <p>Section Name: {{ section.sectionName }}</p>
+              <p>Total Items Sold: {{ section.totalItemsSold }}</p>
+              <p>Total Revenue: {{ section.totalRevenue }}</p>
+            </summary>
+            <table>
+              <thead>
+                <tr>
+                  <th>Item Name</th>
+                  <th>Quantity Sold</th>
+                  <th>Total Revenue</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let controlItem of section.controlItems.$values">
+                  <tr>
+                    <td>{{ controlItem.itemName }}</td>
+                    <td>{{ controlItem.quantitySold }}</td>
+                    <td>{{ controlItem.totalRevenue }}</td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </details>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+  
+  
+  <div>
+    <h2>Order Info</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Order Status</th>
+          <th>Product Type</th>
+          <th>Product Name</th>
+          <th>Product Price</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let orderItem of orderReport.orderInfo.$values">
+          <td>{{ orderItem.orderID }}</td>
+          <td>{{ orderItem.orderStatus }}</td>
+          <td>{{ orderItem.productType }}</td>
+          <td>{{ orderItem.productName }}</td>
+          <td>{{ orderItem.productPrice }}</td>
+          <td>{{ orderItem.quantity }}</td>
+          <td>{{ orderItem.totalPrice }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,28 @@
+<div class="titlePage">
+  <h1>Equipment Report</h1>
+</div>
+
+<div class="report-container" *ngIf="equipmentReport.length > 0">
+  <table class="report-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Equipment Type</th>
+        <th>Quantity On Hand</th>
+        <th>Last Edited</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let equipment of equipmentReport">
+        <td>{{ equipment.name }}</td>
+        <td>{{ equipment.equipmentType }}</td>
+        <td>{{ equipment.quantityOnHand }}</td>
+        <td>{{ equipment.lastEdited }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="buttons">
+  <button class="normButton" (click)="generatePDF()">Generate PDF</button>
+</div>
